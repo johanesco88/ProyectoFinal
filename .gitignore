@@ -1,0 +1,18 @@
+# node modules
+node_modules/
+
+# Firebase credentials
+Backend/config/firebase.json
+
+# environment variables
+.env
+
+# logs
+*.log
+
+# IDEs
+.vscode/
+.idea/
+
+# Mac files
+.DS_Store

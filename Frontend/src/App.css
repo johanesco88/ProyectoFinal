@@ -1,0 +1,13 @@
+.usuarios-lista { /* Clase para tu <ul> */
+    display: flex;
+    flex-direction: row; /* Asegura la disposición horizontal */
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Opcional */
+    gap: 20px; /* Opcional: Espacio entre los elementos li */
+  }
+  
+  .usuarios-lista li {
+    border: 1px solid #eee; /* Opcional */
+    padding: 15px; /* Opcional */
+  }
