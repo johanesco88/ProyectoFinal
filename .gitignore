@@ -5,7 +5,7 @@ node_modules/
 Backend/config/firebase.json
 
 # environment variables
-.env
+
 
 # logs
 *.log
