@@ -10,7 +10,7 @@ exports.getUsuarios = async (req, res) => {
     res.status(500).json({ message: 'Error al obtener usuarios' });
   }
 };
-
+  
 // GET - obtener usuario por ID
 exports.getUsuarioById = async (req, res) => {
   try {

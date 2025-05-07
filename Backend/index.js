@@ -21,9 +21,12 @@ const admin = require("firebase-admin");
 // });
 
 
-// app.use('/api/proyectos', proyectosRoutes);
+app.use('/api/proyectos', proyectosRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 // app.use('/api/avances', avancesRoutes);
+
+
+
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGO_URI)

@@ -1,5 +1,11 @@
 import reactLogo from './assets/react.svg'
 import { useEffect, useState } from 'react';
+import { Container, Grid } from '@mui/material';
+
+
+import ProyectoList from './components/ProyectoList';
+import ProyectoForm from './components/ProyectoForm';
+import ProyectoDetalle from './components/ProyectoDetalle';
 // import { getProyectos, createProyecto,updateProyecto, deleteProyecto, getUsuarios } from './services/api';
 import {
   getUsuarios,
@@ -9,6 +15,7 @@ import {
 } from './services/api';
 
 import './App.css'
+
 
 function App() {
   // const [proyectos, setProyectos] = useState([]);
@@ -100,6 +107,10 @@ function App() {
       console.error('Error al eliminar usuario', error);
     }
   };
+
+  //proyectos
+  const [selectedId, setSelectedId] = useState(null);
+  const [refresh, setRefresh] = useState(false);
   return (
     <>
       <div>
@@ -156,6 +167,29 @@ function App() {
           ))}
         </ul>
       </div>
+
+
+{/* 
+      <ProyectoList />
+      <ProyectoForm />
+
+      <ProyectoDetalle /> */}
+
+      <Container sx={{ mt: 4 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={4}>
+            <ProyectoForm onSuccess={() => setRefresh(!refresh)} />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <ProyectoList onSelect={setSelectedId} key={refresh} />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            {selectedId && <ProyectoDetalle proyectoId={selectedId} />}
+          </Grid>
+        </Grid>
+      </Container>
+
+
     </>
   )
 }

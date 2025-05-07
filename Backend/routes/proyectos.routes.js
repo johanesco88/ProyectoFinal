@@ -1,31 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const Proyecto = require('../models/Proyecto');
+const proyectoController = require('../controllers/proyectos.controller')
 
-// GET todos los proyectos
-router.get('/', async (req, res) => {
-  const proyectos = await Proyecto.find();
-  res.json(proyectos);
-});
+router.get('/', proyectoController.obtenerProyectos);
+router.post('/', proyectoController.crearProyecto);
+router.get('/buscar', proyectoController.buscarProyectos); // RF-11
+router.get('/:id', proyectoController.obtenerProyectoPorId);
+router.put('/:id', proyectoController.actualizarProyecto);
+router.delete('/:id', proyectoController.eliminarProyecto);
 
-// POST crear proyecto
-router.post('/', async (req, res) => {
-  const nuevoProyecto = new Proyecto(req.body);
-  await nuevoProyecto.save();
-  res.status(201).json(nuevoProyecto);
-});
 
-// Actualizar un proyecto
-router.put('/:id', async (req, res) => {
-    const proyectoActualizado = await Proyecto.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(proyectoActualizado);
-  });
-  
-  // Eliminar un proyecto
-  router.delete('/:id', async (req, res) => {
-    await Proyecto.findByIdAndDelete(req.params.id);
-    res.json({ mensaje: 'Proyecto eliminado' });
-  });
-  
+router.post('/:id/objetivos/:objetivoIndex/avances', proyectoController.agregarAvance);
+
+// Estados
+router.post('/:id/estado', proyectoController.cambiarEstadoProyecto);
 
 module.exports = router;
