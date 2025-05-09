@@ -1,7 +1,6 @@
 // backend/routes/auth.js
 const express = require('express');
 const router = express.Router();
-const admin = require('../config/firebaseAdmin');
 const Usuario = require('../models/Usuario'); // modelo Mongo
 const jwt = require('jsonwebtoken');
 

@@ -10,20 +10,15 @@ app.use(express.json());
 // Rutas
 const proyectosRoutes = require('./routes/proyectos.routes');
 const usuariosRoutes = require('./routes/usuarios.routes');
-const avancesRoutes = require('./routes/avances.routes');
+const authRoutes = require('./routes/auth.routes');
 
 const admin = require("firebase-admin");
 
-// const serviceAccount = require("./config/firebase.json");
 
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount)
-// });
 
 
 app.use('/api/proyectos', proyectosRoutes);
 app.use('/api/usuarios', usuariosRoutes);
-// app.use('/api/avances', avancesRoutes);
 
 
 
